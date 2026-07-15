@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Care Cost Estimator | Mint Group Private Care</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.day-btn{padding:10px 6px;border:1.5px solid var(--border);border-radius:10px;background:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+.day-btn.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+.days-row{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:16px}
+@media(max-width:600px){.days-row{grid-template-columns:repeat(4,1fr)}}
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+@media(max-width:600px){.service-grid{grid-template-columns:1fr}}
+.service-grid label{display:flex;align-items:center;gap:8px;font-size:13px;padding:8px;background:#fff;border-radius:8px;border:1px solid var(--border)}
+.est-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<div class="topbar">🍃 Compassionate in-home care in Pittsburgh, PA and surrounding areas.</div>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Mint Group Private Care logo" style="border-radius:0;height:48px;width:auto"></a>
+    <button class="hamburger" id="hamburger">☰</button>
+    <div class="nav-backdrop" id="navBackdrop"></div>
+    <div class="navlinks" id="navlinks">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="services.html">SERVICES</a>
+      <a href="care-packages.html">CARE PACKAGES</a>
+      <a href="resources.html">RESOURCES</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="contact.html" class="btn nav-cta">GET STARTED</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1 class="hero-fade d1" style="font-size:32px">Care Cost Estimator</h1>
+      <hr class="divider hero-fade d2" style="margin:14px 0">
+      <p class="hero-fade d3" style="font-size:14px;color:var(--text-soft);line-height:1.7;max-width:420px">Use our estimator to get a personalized idea of the cost of care based on your needs. Final pricing is confirmed after a free care assessment.</p>
+    </div>
+    <div class="hero-fade d2"><img src="assets/services_hero.png" alt="Caregiver and client" style="border-radius:20px;box-shadow:var(--shadow-hover)"></div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:20px">
+  <div class="container grid g2" style="align-items:start;gap:24px">
+
+    <form id="estimatorForm" class="card reveal" style="padding:26px">
+      <h3 style="font-size:16px;margin-bottom:18px"><span style="background:var(--forest);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;margin-right:8px">1</span>Tell Us About Your Care Needs</h3>
+
+      <div class="field-row">
+        <div class="field"><label>Start date</label><input type="date" id="startDate"></div>
+        <div class="field"><label>End date (optional)</label><input type="date" id="endDate"></div>
+      </div>
+
+      <p style="font-size:12.5px;font-weight:700;color:var(--text-soft);margin-bottom:8px">PREFERRED DAYS</p>
+      <div class="days-row">
+        <div class="day-btn active" data-day="Mon">Mon</div>
+        <div class="day-btn" data-day="Tue">Tue</div>
+        <div class="day-btn active" data-day="Wed">Wed</div>
+        <div class="day-btn" data-day="Thu">Thu</div>
+        <div class="day-btn" data-day="Fri">Fri</div>
+        <div class="day-btn" data-day="Sat">Sat</div>
+        <div class="day-btn" data-day="Sun">Sun</div>
+      </div>
+
+      <div class="field-row">
+        <div class="field"><label>Arrival time</label><input type="time" id="arrivalTime" value="08:00"></div>
+        <div class="field"><label>Departure time</label><input type="time" id="departureTime" value="12:00"></div>
+      </div>
+
+      <div class="field">
+        <label>Care level</label>
+        <select id="careLevel">
+          <option value="companion">Companion Care, $25/hr</option>
+          <option value="personal">Personal Care, $28/hr</option>
+          <option value="dementia">Dementia &amp; Memory Care, $30/hr</option>
+          <option value="overnight">Overnight Care, $30/hr</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Type of visit</label>
+        <select id="visitType">
+          <option value="onetime">One Time Visit</option>
+          <option value="prn">As Needed (PRN)</option>
+          <option value="temporary">Temporary Care</option>
+          <option value="recurring">Recurring Weekly Schedule</option>
+          <option value="longterm">Long Term Ongoing Care</option>
+          <option value="unsure">I'm Not Sure Yet</option>
+        </select>
+      </div>
+
+      <p style="font-size:12.5px;font-weight:700;color:var(--text-soft);margin-bottom:8px">REQUESTED SERVICES (select all that apply)</p>
+      <div class="service-grid">
+        <label><input type="checkbox" class="service-check" checked> Companionship</label>
+        <label><input type="checkbox" class="service-check"> Meal preparation</label>
+        <label><input type="checkbox" class="service-check"> Light housekeeping</label>
+        <label><input type="checkbox" class="service-check"> Laundry</label>
+        <label><input type="checkbox" class="service-check"> Bathing assistance</label>
+        <label><input type="checkbox" class="service-check"> Dressing assistance</label>
+        <label><input type="checkbox" class="service-check"> Toileting assistance</label>
+        <label><input type="checkbox" class="service-check"> Mobility assistance</label>
+        <label><input type="checkbox" class="service-check"> Medication reminders</label>
+        <label><input type="checkbox" class="service-check"> Transportation</label>
+        <label><input type="checkbox" class="service-check"> Dementia support</label>
+        <label><input type="checkbox" class="service-check"> Pet assistance</label>
+      </div>
+
+      <div class="field-row">
+        <div class="field"><label>Travel</label>
+          <select id="travelDist"><option>Under 10 miles, included</option><option>10–20 miles</option><option>20+ miles</option></select>
+        </div>
+        <div class="field"><label>Booking speed</label>
+          <select id="bookingSpeed"><option>Standard booking</option><option>Same-day booking</option></select>
+        </div>
+      </div>
+
+      <div class="field"><label>Holiday care</label>
+        <select id="holidayCare"><option>No</option><option>Yes</option></select>
+      </div>
+
+      <button type="button" class="btn" style="width:100%;margin-top:8px" onclick="document.getElementById('startDate').dispatchEvent(new Event('input'))">📊 UPDATE ESTIMATE</button>
+    </form>
+
+    <div class="reveal">
+      <div class="band" style="padding:26px">
+        <h3 style="font-size:16px;margin-bottom:16px"><span style="background:var(--gold);color:#2a2205;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;margin-right:8px">2</span>Estimated Cost</h3>
+        <div class="est-row"><span>Selected days</span><b id="estSelectedDays">2</b></div>
+        <div class="est-row"><span>Hours per visit</span><b id="estHours">4</b></div>
+        <div class="est-row"><span>Average hourly rate</span><b id="estRate">$25</b></div>
+        <div class="est-row"><span>Per visit</span><b id="estPerVisit">$100</b></div>
+        <div class="est-row" style="border-bottom:0"><span>Weekly</span><b id="estWeekly">$200</b></div>
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin:14px 0 6px" id="estBigNumber">$200/week</div>
+        <p style="font-size:11.5px;opacity:.8;line-height:1.5">Weekend care adds $5/hr. Holiday care adds $8/hr. This is an estimate only — final pricing is confirmed after a free in-home assessment.</p>
+        <p style="font-size:11.5px;opacity:.8;margin-top:6px">Approx. monthly: <b id="estMonthly">$866</b></p>
+      </div>
+
+      <div class="card" style="padding:20px;margin-top:16px;display:flex;gap:14px;align-items:center">
+        <div class="icircle beige">♥</div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:4px">Ready to Get Started?</h4>
+          <p style="font-size:12px;color:var(--text-soft);margin-bottom:10px">Schedule your free care assessment to receive a personalized care plan and exact pricing.</p>
+          <a href="contact.html" class="btn" style="padding:10px 16px;font-size:12px">📅 SCHEDULE FREE ASSESSMENT</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="container reveal" style="margin-bottom:50px">
+  <div class="grid g4 text-center">
+    <div><div class="icircle beige" style="margin:0 auto 10px">🏷</div><h4 style="font-size:13px">No Obligation</h4><p style="font-size:11.5px;color:var(--text-soft)">This estimator is for informational purposes only.</p></div>
+    <div><div class="icircle beige" style="margin:0 auto 10px">👤</div><h4 style="font-size:13px">Personalized Care</h4><p style="font-size:11.5px;color:var(--text-soft)">Final pricing is confirmed after a free assessment.</p></div>
+    <div><div class="icircle beige" style="margin:0 auto 10px">🔄</div><h4 style="font-size:13px">Flexible Services</h4><p style="font-size:11.5px;color:var(--text-soft)">Care plans adjust as your needs change.</p></div>
+    <div><div class="icircle beige" style="margin:0 auto 10px">♥</div><h4 style="font-size:13px">Compassionate Support</h4><p style="font-size:11.5px;color:var(--text-soft)">We're here to help every step of the way.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div><img src="assets/logo.png" alt="Mint Group Private Care" style="height:40px;width:auto;margin-bottom:10px"><p>Compassionate in-home care in Pittsburgh, PA and surrounding areas.</p><div class="foot-social"><a href="#">f</a><a href="#">◎</a><a href="#">♥</a></div></div>
+      <div><h4>Quick Links</h4><a href="index.html">Home</a><br><a href="about.html">About</a><br><a href="services.html">Services</a><br><a href="care-packages.html">Care Packages</a></div>
+      <div><h4>&nbsp;</h4><a href="resources.html">Resources</a><br><a href="cost-estimator.html">Cost Estimator</a><br><a href="assessment.html">Free Assessment</a><br><a href="faq.html">FAQ</a><br><a href="contact.html">Contact</a></div>
+      <div><h4>Contact Info</h4><p>📞 (412) 853-5697<br>✉ mintgroupcare@gmail.com<br>📍 Pittsburgh, PA<br>and surrounding areas</p></div>
+    </div>
+    <div class="foot-bottom">Mint Group Private Care</div>
+  </div>
+  <div class="copyright-bar">© 2024 Mint Group Private Care. All Rights Reserved. &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--cream)">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html" style="color:var(--cream)">Terms &amp; Conditions</a> &nbsp;|&nbsp; <a href="payment-policy.html" style="color:var(--cream)">Payment &amp; Cancellation Policy</a> &nbsp;|&nbsp; <a href="accessibility.html" style="color:var(--cream)">Accessibility Statement</a></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

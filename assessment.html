@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a Free Care Assessment | Mint Group Private Care</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.time-slot{padding:12px;border:1.5px solid var(--border);border-radius:10px;background:#fff;font-size:13px;font-weight:600;cursor:pointer;text-align:center;transition:all .2s}
+.time-slot.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+.slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.radio-row{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:10px 0}
+.radio-row input{width:18px;height:18px;min-height:auto}
+.check-row{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:9px 0}
+.check-row input{width:18px;height:18px;min-height:auto;flex-shrink:0}
+.section-divider{margin:26px 0 14px;font-size:13px;font-weight:700;color:var(--forest);text-transform:uppercase;letter-spacing:.4px;border-bottom:2px solid var(--sage);padding-bottom:8px}
+</style>
+</head>
+<body>
+
+<div class="topbar">🍃 Compassionate in-home care in Pittsburgh, PA and surrounding areas.</div>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Mint Group Private Care logo" style="border-radius:0;height:48px;width:auto"></a>
+    <button class="hamburger" id="hamburger">☰</button>
+    <div class="nav-backdrop" id="navBackdrop"></div>
+    <div class="navlinks" id="navlinks">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="services.html">SERVICES</a>
+      <a href="care-packages.html">CARE PACKAGES</a>
+      <a href="resources.html">RESOURCES</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="assessment.html" class="btn nav-cta">GET STARTED</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1 class="hero-fade d1" style="font-size:32px">Request a Free Care Assessment</h1>
+      <hr class="divider hero-fade d2" style="margin:14px 0">
+      <p class="hero-fade d3" style="font-size:14px;color:var(--text-soft);line-height:1.7;max-width:420px">Tell me about your care needs below, and I'll follow up personally to schedule your free in-home assessment — no obligation, no guesswork.</p>
+    </div>
+    <div class="hero-fade d2"><img src="assets/contact_hero.png" alt="Caregiver and client" style="border-radius:20px;box-shadow:var(--shadow-hover)"></div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:10px">
+  <div class="container" style="max-width:760px">
+    <form id="assessmentForm" name="assessment" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="card reveal" style="padding:30px" data-success-target="assessSuccess" onsubmit="return handleFormSubmit(event, this)">
+      <input type="hidden" name="form-name" value="assessment">
+      <p style="display:none"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+
+      <div class="section-divider">Contact Information</div>
+      <div class="field-row">
+        <div class="field"><input type="text" name="firstName" placeholder="First Name *" required></div>
+        <div class="field"><input type="text" name="lastName" placeholder="Last Name *" required></div>
+      </div>
+      <div class="field"><input type="tel" name="phone" placeholder="Phone Number *" required></div>
+      <div class="field"><input type="email" name="email" placeholder="Email *" required></div>
+
+      <div class="section-divider">Address</div>
+      <div class="field"><input type="text" name="street" placeholder="Street Address"></div>
+      <div class="field"><input type="text" name="street2" placeholder="Street Address Line 2"></div>
+      <div class="field-row">
+        <div class="field"><input type="text" name="city" placeholder="City"></div>
+        <div class="field"><input type="text" name="state" placeholder="State / Province"></div>
+      </div>
+      <div class="field"><input type="text" name="zip" placeholder="Postal / Zip Code"></div>
+
+      <p style="font-size:13px;font-weight:600;margin-bottom:6px">Is care provided at this address? *</p>
+      <label class="radio-row"><input type="radio" name="careaddress" value="Yes" required> Yes</label>
+      <label class="radio-row"><input type="radio" name="careaddress" value="No, I'll provide another address"> No, I'll provide another address</label>
+      <div class="field" style="margin-top:10px"><input type="text" name="address2" placeholder="2nd address, if required"></div>
+
+      <div class="section-divider">About the Client</div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:6px">Who Needs Care? *</p>
+      <label class="radio-row"><input type="radio" name="whoneeds" value="Myself" required> Myself</label>
+      <label class="radio-row"><input type="radio" name="whoneeds" value="Parent"> Parent</label>
+      <label class="radio-row"><input type="radio" name="whoneeds" value="Spouse"> Spouse</label>
+      <label class="radio-row"><input type="radio" name="whoneeds" value="Other"> Other</label>
+
+      <div class="field" style="margin-top:14px">
+        <label style="display:block!important;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text)">Mobility Level *</label>
+        <select name="mobilityLevel" required>
+          <option value="">Please Select</option>
+          <option>Independent</option><option>Uses Cane</option><option>Uses Walker</option>
+          <option>Uses Wheelchair</option><option>Hoyer Lift Required</option><option>BedBound</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label style="display:block!important;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text)">Does the client have memory impairment or dementia? *</label>
+        <select name="memoryImpairment" required>
+          <option value="">Please Select</option>
+          <option>No</option><option>Mild</option><option>Moderate</option><option>Advanced</option><option>Unsure</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label style="display:block!important;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text)">Pets in the Home *</label>
+        <select name="pets" required>
+          <option value="">Please Select</option>
+          <option>None</option><option>Dog</option><option>Cat</option><option>Bird</option><option>Other</option>
+        </select>
+      </div>
+
+      <p style="font-size:13px;font-weight:600;margin:14px 0 6px">Smoking *</p>
+      <label class="radio-row"><input type="radio" name="smoking" value="Non Smoking Home" required> Non Smoking Home</label>
+      <label class="radio-row"><input type="radio" name="smoking" value="Smoking Home"> Smoking Home</label>
+      <label class="radio-row"><input type="radio" name="smoking" value="Outdoor Smoking Only"> Outdoor Smoking Only</label>
+      <label class="radio-row"><input type="radio" name="smoking" value="Other"> Other</label>
+
+      <div class="section-divider">Care Needs</div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:6px">Is Care Needed... *</p>
+      <label class="radio-row"><input type="radio" name="urgency" value="ASAP" required> ASAP</label>
+      <label class="radio-row"><input type="radio" name="urgency" value="Within a week"> Within a week</label>
+      <label class="radio-row"><input type="radio" name="urgency" value="Within a month"> Within a month</label>
+      <label class="radio-row"><input type="radio" name="urgency" value="Planning ahead"> Planning ahead</label>
+
+      <p style="font-size:13px;font-weight:600;margin:14px 0 6px">Emergency Situation *</p>
+      <label class="check-row"><input type="checkbox" name="emergency" value="Client in Hospital"> Client in Hospital</label>
+      <label class="check-row"><input type="checkbox" name="emergency" value="Client recently discharged"> Client recently discharged</label>
+      <label class="check-row"><input type="checkbox" name="emergency" value="Hospice"> Hospice</label>
+      <label class="check-row"><input type="checkbox" name="emergency" value="Fall within last 30 days"> Fall within last 30 days</label>
+      <label class="check-row"><input type="checkbox" name="emergency" value="None"> None</label>
+
+      <p style="font-size:13px;font-weight:600;margin:14px 0 6px">Care Level *</p>
+      <label class="radio-row"><input type="radio" name="carelevel" value="Companion Care ($25/hour)" required> Companion Care ($25/hour)</label>
+      <label class="radio-row"><input type="radio" name="carelevel" value="Personal Care ($30/hour)"> Personal Care ($30/hour)</label>
+      <label class="radio-row"><input type="radio" name="carelevel" value="Overnight &amp; Live In Care (Custom Quote)"> Overnight &amp; Live In Care (Custom Quote)</label>
+      <p style="font-size:12px;color:var(--text-soft);margin-top:8px">🕐 Please note: All scheduled care visits require a 4 consecutive hour minimum.</p>
+
+      <p style="font-size:13px;font-weight:600;margin:16px 0 8px">Type of Care *</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Companionship"> Companionship</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Personal Care"> Personal Care</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Bathing"> Bathing</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Dressing"> Dressing</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Toileting"> Toileting</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Meal Preparation"> Meal Preparation</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Laundry"> Laundry</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Light Housekeeping"> Light Housekeeping</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Transportation"> Transportation</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Medication Reminders"> Medication Reminders</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Dementia Support"> Dementia Support</label>
+        <label class="check-row"><input type="checkbox" name="typeOfCare" value="Pet Assistance"> Pet Assistance</label>
+      </div>
+
+      <div class="section-divider">Scheduling</div>
+      <div class="field-row">
+        <div class="field"><label style="display:block!important;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text)">Preferred Date</label><input type="date" name="preferredDate"></div>
+      </div>
+      <p style="font-size:13px;font-weight:600;margin:10px 0 8px">Preferred Time</p>
+      <input type="hidden" name="preferredTime" id="preferredTimeInput">
+      <div class="slot-grid">
+        <div class="time-slot" onclick="selectSlot(this)">9:00 AM</div>
+        <div class="time-slot" onclick="selectSlot(this)">10:00 AM</div>
+        <div class="time-slot" onclick="selectSlot(this)">11:00 AM</div>
+        <div class="time-slot" onclick="selectSlot(this)">12:00 PM</div>
+        <div class="time-slot" onclick="selectSlot(this)">1:00 PM</div>
+        <div class="time-slot" onclick="selectSlot(this)">2:00 PM</div>
+        <div class="time-slot" onclick="selectSlot(this)">3:00 PM</div>
+        <div class="time-slot" onclick="selectSlot(this)">4:00 PM</div>
+      </div>
+
+      <div class="field" style="margin-top:16px">
+        <label style="display:block!important;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text)">Tell Me About Your Care Needs *</label>
+        <textarea name="careNeeds" rows="4" placeholder="Start and end date (optional), preferred days, arrival time, departure time..." required></textarea>
+      </div>
+
+      <div class="section-divider">A Few More Details</div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:6px">How will services be paid? *</p>
+      <label class="radio-row"><input type="radio" name="payment" value="Private Pay" required> Private Pay</label>
+      <label class="radio-row"><input type="radio" name="payment" value="Long Term Care Insurance (Reimbursement)"> Long Term Care Insurance (Reimbursement)</label>
+      <label class="radio-row"><input type="radio" name="payment" value="Veterans Benefits (Reimbursement)"> Veterans Benefits (Reimbursement)</label>
+      <label class="radio-row"><input type="radio" name="payment" value="Unsure"> Unsure</label>
+      <p style="font-size:11.5px;color:var(--text-soft);margin-top:6px">Mint Group Private Care currently operates as a private pay provider. Some Long Term Care Insurance policies and Veterans Benefits may reimburse eligible clients after payment — please verify coverage with your provider.</p>
+
+      <p style="font-size:13px;font-weight:600;margin:16px 0 6px">Preferred Contact Method *</p>
+      <label class="radio-row"><input type="radio" name="contactmethod" value="Phone" required> Phone</label>
+      <label class="radio-row"><input type="radio" name="contactmethod" value="Text"> Text</label>
+      <label class="radio-row"><input type="radio" name="contactmethod" value="Email"> Email</label>
+      <label class="radio-row"><input type="radio" name="contactmethod" value="Other"> Other</label>
+
+      <p style="font-size:13px;font-weight:600;margin:16px 0 6px">How did you hear about us? *</p>
+      <label class="radio-row"><input type="radio" name="referral" value="Google" required> Google</label>
+      <label class="radio-row"><input type="radio" name="referral" value="Facebook"> Facebook</label>
+      <label class="radio-row"><input type="radio" name="referral" value="Friend"> Friend</label>
+      <label class="radio-row"><input type="radio" name="referral" value="Flyer"> Flyer</label>
+      <label class="radio-row"><input type="radio" name="referral" value="Referral"> Referral</label>
+      <label class="radio-row"><input type="radio" name="referral" value="Other"> Other</label>
+
+      <div class="field" style="margin-top:14px"><label style="display:block!important;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text)">Emergency Contact *</label><input type="text" name="emergencyContact" required></div>
+      <div class="field"><label style="display:block!important;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text)">Anything You'd Like For Me To Know? *</label><input type="text" name="additionalNotes" required></div>
+
+      <label class="radio-row" style="align-items:flex-start;margin-top:10px">
+        <input type="checkbox" name="agreement" value="Agreed" required style="margin-top:3px">
+        <span style="font-size:12.5px;color:var(--text-soft)">I understand this request does not guarantee care services. Final pricing, scheduling, and availability will be confirmed after the in home care assessment.</span>
+      </label>
+
+      <button type="submit" class="btn" style="width:100%;margin-top:20px">SUBMIT</button>
+    </form>
+
+    <div id="assessSuccess" class="card reveal" style="padding:40px;text-align:center;display:none">
+      <div class="icircle" style="margin:0 auto 14px;width:56px;height:56px;font-size:24px">✓</div>
+      <h3 style="font-size:20px;margin-bottom:10px">Thank you!</h3>
+      <p style="font-size:14px;color:var(--text-soft)">Your request has been received. I'll follow up with you personally, shortly, to schedule your free in-home care assessment.</p>
+    </div>
+  </div>
+</section>
+
+<script>function selectSlot(el){ document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('active')); el.classList.add('active'); document.getElementById('preferredTimeInput').value = el.textContent; }</script>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div><img src="assets/logo.png" alt="Mint Group Private Care" style="height:40px;width:auto;margin-bottom:10px"><p>Compassionate in-home care in Pittsburgh, PA and surrounding areas.</p><div class="foot-social"><a href="#">f</a><a href="#">◎</a><a href="#">♥</a></div></div>
+      <div><h4>Quick Links</h4><a href="index.html">Home</a><br><a href="about.html">About</a><br><a href="services.html">Services</a><br><a href="care-packages.html">Care Packages</a></div>
+      <div><h4>&nbsp;</h4><a href="resources.html">Resources</a><br><a href="cost-estimator.html">Cost Estimator</a><br><a href="faq.html">FAQ</a><br><a href="contact.html">Contact</a></div>
+      <div><h4>Contact Info</h4><p>📞 (412) 853-5697<br>✉ mintgroupcare@gmail.com<br>📍 Pittsburgh, PA<br>and surrounding areas</p></div>
+    </div>
+    <div class="foot-bottom">Mint Group Private Care</div>
+  </div>
+  <div class="copyright-bar">© 2024 Mint Group Private Care. All Rights Reserved. &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--cream)">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html" style="color:var(--cream)">Terms &amp; Conditions</a> &nbsp;|&nbsp; <a href="payment-policy.html" style="color:var(--cream)">Payment &amp; Cancellation Policy</a> &nbsp;|&nbsp; <a href="accessibility.html" style="color:var(--cream)">Accessibility Statement</a></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

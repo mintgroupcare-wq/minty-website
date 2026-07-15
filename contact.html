@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Mint Group Private Care</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">🍃 Compassionate in-home care in Pittsburgh, PA and surrounding areas.</div>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Mint Group Private Care logo" style="border-radius:0;height:48px;width:auto">
+    </a>
+    <button class="hamburger" id="hamburger">☰</button>
+    <div class="nav-backdrop" id="navBackdrop"></div>
+    <div class="navlinks" id="navlinks">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="services.html">SERVICES</a>
+      <a href="care-packages.html">CARE PACKAGES</a>
+      <a href="resources.html">RESOURCES</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html" class="active">CONTACT</a>
+      <a href="contact.html" class="btn nav-cta">GET STARTED</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid" style="padding:48px 32px">
+    <div>
+      <div class="eyebrow hero-fade d1">WE'D LOVE TO HEAR FROM YOU</div>
+      <h1 class="hero-fade d2" style="font-size:36px;line-height:1.15">Let's Talk About<br><span class="script" style="font-size:36px">How We Can Help ♥</span></h1>
+      <p class="hero-fade d3" style="color:var(--text-soft);font-size:14.5px;max-width:400px;margin:16px 0 22px">Whether you have a question, need more information, or are ready to schedule a free <b>care assessment</b>, we're here for you.</p>
+      <a href="tel:4128535697" class="btn hero-fade d4">📞 (412) 853-5697</a>
+      <p class="hero-fade d4" style="font-size:12.5px;color:var(--text-soft);margin-top:14px">🍃 Your care. Our priority.</p>
+    </div>
+    <div class="hero-fade d2">
+      <img src="assets/contact_hero.png" alt="Caregiver laughing with client" style="border-radius:20px;box-shadow:var(--shadow-hover)">
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:20px">
+  <div class="container grid g2" style="align-items:start">
+    <div class="reveal">
+      <div class="eyebrow">🍃 SEND US A MESSAGE</div>
+      <p style="color:var(--text-soft);font-size:13.5px;margin-bottom:10px">Fill out the form below and I'll get back to you personally as soon as possible.</p>
+      <p style="font-size:12.5px;color:var(--text-soft);margin-bottom:20px;padding:12px;background:var(--sage);border-radius:10px">🌿 Ready to move forward? <a href="assessment.html" style="color:var(--forest);font-weight:700;text-decoration:underline">Request your Free Care Assessment</a> with our full intake form instead.</p>
+      <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-success-target="contactSuccess" onsubmit="return handleFormSubmit(event, this)">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+        <div class="field-row">
+          <div class="field"><input type="text" name="firstName" placeholder="First Name *" required></div>
+          <div class="field"><input type="text" name="lastName" placeholder="Last Name *" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><input type="tel" name="phone" placeholder="Phone Number *" required></div>
+          <div class="field"><input type="email" name="email" placeholder="Email Address *" required></div>
+        </div>
+        <div class="field">
+          <select name="helpType" required>
+            <option value="">How can we help you? *</option>
+            <option>Request a Free Assessment</option>
+            <option>General Question</option>
+            <option>Pricing Information</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <p style="font-size:12.5px;font-weight:700;color:var(--text-soft);margin:16px 0 8px">WHAT TYPE OF CARE ARE YOU INTERESTED IN?</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="careType" value="One Time Visit" style="width:auto"> One Time Visit</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="careType" value="As Needed (PRN)" style="width:auto"> As Needed (PRN)</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="careType" value="Temporary Recovery Care" style="width:auto"> Temporary Recovery Care</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="careType" value="Recurring Weekly Care" style="width:auto"> Recurring Weekly Care</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="careType" value="Long Term Ongoing Care" style="width:auto"> Long Term Ongoing Care</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="careType" value="Not Sure Yet" style="width:auto"> I'm Not Sure Yet</label>
+        </div>
+
+        <p style="font-size:12.5px;font-weight:700;color:var(--text-soft);margin:16px 0 8px">ARE YOU COMPLETING THIS FORM AS:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="role" value="The Person Needing Care" style="width:auto"> The Person Needing Care</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="role" value="A Family Member" style="width:auto"> A Family Member</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="role" value="A Legal Guardian" style="width:auto"> A Legal Guardian</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="role" value="A Healthcare Professional" style="width:auto"> A Healthcare Professional</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border);grid-column:1/-1"><input type="checkbox" name="role" value="Other" style="width:auto"> Other</label>
+        </div>
+
+        <details style="margin-bottom:16px">
+          <summary style="font-size:12.5px;font-weight:700;color:var(--forest);cursor:pointer;padding:10px 0">🦽 MOBILITY &amp; TRANSPORTATION (if applicable)</summary>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="mobility" value="Uses a wheelchair" style="width:auto"> Do you use a wheelchair?</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="mobility" value="Power wheelchair" style="width:auto"> Manual or power?</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="mobility" value="Can transfer into car" style="width:auto"> Can you safely transfer into a car?</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border)"><input type="checkbox" name="mobility" value="Needs wheelchair van" style="width:auto"> Need a wheelchair accessible van?</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px;background:var(--cream);border-radius:8px;border:1px solid var(--border);grid-column:1/-1"><input type="checkbox" name="mobility" value="Travels with oxygen/equipment" style="width:auto"> Do you travel with oxygen or other equipment?</label>
+          </div>
+        </details>
+
+        <div class="field"><textarea name="message" rows="4" placeholder="Tell us more about your needs..."></textarea></div>
+        <button type="submit" class="btn" style="width:100%">➤ SEND MESSAGE</button>
+        <p style="font-size:11.5px;color:var(--text-soft);margin-top:10px;text-align:center">🔒 Your information is confidential and will never be shared.</p>
+      </form>
+
+      <div id="contactSuccess" class="card" style="padding:40px;text-align:center;display:none">
+        <div class="icircle" style="margin:0 auto 14px;width:56px;height:56px;font-size:24px">✓</div>
+        <h3 style="font-size:20px;margin-bottom:10px">Message sent!</h3>
+        <p style="font-size:14px;color:var(--text-soft)">Thanks for reaching out — I'll get back to you personally as soon as possible.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">🍃 CONTACT INFORMATION</div>
+      <div style="display:flex;gap:14px;margin:20px 0">
+        <div class="icircle beige">📞</div>
+        <div><b style="font-size:14px">Phone</b><br><span style="font-size:14px">(412) 853-5697</span><br><span style="font-size:12px;color:var(--text-soft)">Call or text anytime</span></div>
+      </div>
+      <div style="display:flex;gap:14px;margin:20px 0">
+        <div class="icircle beige">✉</div>
+        <div><b style="font-size:14px">Email</b><br><span style="font-size:14px">mintgroupcare@gmail.com</span><br><span style="font-size:12px;color:var(--text-soft)">We respond within 24 hours</span></div>
+      </div>
+      <div style="display:flex;gap:14px;margin:20px 0">
+        <div class="icircle beige">📍</div>
+        <div><b style="font-size:14px">Address</b><br><span style="font-size:14px">Pittsburgh, PA<br>and surrounding areas</span><br><span style="font-size:12px;color:var(--text-soft)">In-home care where you need it most</span></div>
+      </div>
+      <div style="display:flex;gap:14px;margin:20px 0">
+        <div class="icircle beige">🕐</div>
+        <div><b style="font-size:14px">Office Hours</b><br><span style="font-size:13px">Monday – Friday: 8am – 6pm<br>Saturday: 9am – 2pm<br>Sunday: By Appointment</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="grid g3">
+    <div class="card reveal" style="padding:24px">
+      <span class="eyebrow" style="background:var(--forest);color:#fff;padding:6px 14px;border-radius:999px;display:inline-block">SERVICE AREAS</span>
+      <p style="font-size:13.5px;margin:16px 0 10px"><b>Proudly serving Pittsburgh, PA and surrounding communities.</b></p>
+      <p style="font-size:13px;line-height:1.9;color:var(--text-soft)">
+        ✅ Allegheny County<br>✅ Westmoreland County<br>✅ Beaver County<br>✅ Washington County<br>✅ And nearby areas
+      </p>
+      <p style="font-size:12px;color:var(--text-soft);margin-top:10px">Not sure if we service your area? Contact us — we'd be happy to check!</p>
+    </div>
+    <div class="card reveal" style="padding:24px">
+      <span class="eyebrow" style="background:var(--forest);color:#fff;padding:6px 14px;border-radius:999px;display:inline-block">WAYS TO CONNECT</span>
+      <h3 style="font-size:17px;margin:16px 0">We're just a call, text, or email away!</h3>
+      <p style="font-size:13.5px;margin:14px 0">📞 <b>Call or Text</b><br><span style="color:var(--text-soft)">(412) 853-5697</span></p>
+      <p style="font-size:13.5px;margin:14px 0">✉ <b>Email Us</b><br><span style="color:var(--text-soft)">mintgroupcare@gmail.com</span></p>
+      <p style="font-size:13.5px;margin:14px 0">💬 <b>Request a Free Care Assessment</b><br><span style="color:var(--text-soft)">We'll come to you!</span></p>
+    </div>
+    <div class="card reveal" style="padding:24px">
+      <span class="eyebrow" style="background:var(--forest);color:#fff;padding:6px 14px;border-radius:999px;display:inline-block">WHAT HAPPENS NEXT?</span>
+      <div style="margin-top:16px">
+        <p style="font-size:13.5px;margin-bottom:12px"><b style="color:var(--forest)">1</b> &nbsp;<b>You Reach Out</b><br><span style="font-size:12px;color:var(--text-soft);margin-left:22px">Contact us by phone, email, or through our form.</span></p>
+        <p style="font-size:13.5px;margin-bottom:12px"><b style="color:var(--forest)">2</b> &nbsp;<b>We Connect</b><br><span style="font-size:12px;color:var(--text-soft);margin-left:22px">I'll learn more about your needs and answer your questions.</span></p>
+        <p style="font-size:13.5px;margin-bottom:12px"><b style="color:var(--forest)">3</b> &nbsp;<b>Free Care Assessment</b><br><span style="font-size:12px;color:var(--text-soft);margin-left:22px">I'll schedule a convenient time to meet with you in your home.</span></p>
+        <p style="font-size:13.5px;margin-bottom:0"><b style="color:var(--forest)">4</b> &nbsp;<b>Personalized Care Plan</b><br><span style="font-size:12px;color:var(--text-soft);margin-left:22px">I'll create a plan that's right for you and your loved one.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container" style="margin:50px auto 60px">
+  <div class="cta-strip reveal">
+    <div>
+      <h2>Ready to Get Started?</h2>
+      <div class="script" style="font-size:20px;margin:4px 0">We're here to help every step of the way.</div>
+      <p style="opacity:.9;font-size:14px">Contact us today to schedule your free in-home care assessment.</p>
+    </div>
+    <div style="text-align:right">
+      <a href="#contactForm" class="btn cream" style="margin-bottom:10px">📅 SCHEDULE FREE ASSESSMENT</a><br>
+      <a href="tel:4128535697" style="color:#fff;font-size:14px">📞 (412) 853-5697</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <img src="assets/logo.png" alt="Mint Group Private Care" style="height:40px;width:auto;margin-bottom:10px">
+        <p>Compassionate in-home care in Pittsburgh, PA and surrounding areas.</p>
+        <div class="foot-social"><a href="#">f</a><a href="#">◎</a><a href="#">♥</a></div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a><br><a href="about.html">About</a><br>
+        <a href="services.html">Services</a><br><a href="care-packages.html">Care Packages</a>
+      </div>
+      <div>
+        <h4>&nbsp;</h4>
+        <a href="resources.html">Resources</a><br><a href="cost-estimator.html">Cost Estimator</a><br><a href="assessment.html">Free Assessment</a><br><a href="faq.html">FAQ</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <p>📞 (412) 853-5697<br>✉ mintgroupcare@gmail.com<br>📍 Pittsburgh, PA<br>and surrounding areas</p>
+      </div>
+    </div>
+    <div class="foot-bottom">Hours: Monday–Friday 8am–6pm · Saturday 9am–2pm · Sunday by appointment</div>
+  </div>
+  <div class="copyright-bar">© 2024 Mint Group Private Care. All Rights Reserved. &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--cream)">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html" style="color:var(--cream)">Terms &amp; Conditions</a> &nbsp;|&nbsp; <a href="payment-policy.html" style="color:var(--cream)">Payment &amp; Cancellation Policy</a></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
