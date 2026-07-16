@@ -151,6 +151,13 @@ footer{background:var(--beige);padding:50px 0 0;margin-top:40px}
 .accordion-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 20px;font-size:13.5px;color:var(--text-soft);line-height:1.6}
 .accordion-item.open .accordion-body{padding:0 20px 20px 58px}
 
+/* NOTICE BOX (client-facing announcements) */
+.notice-box{
+  background:var(--sage);border:1px solid var(--border);border-left:4px solid var(--forest);
+  border-radius:14px;padding:18px 22px;font-size:13.5px;color:var(--text);line-height:1.65;
+}
+.notice-box b{color:var(--forest)}
+
 /* UTIL */
 .grid{display:grid;gap:20px;align-items:center}
 .g2{grid-template-columns:1fr 1fr}
