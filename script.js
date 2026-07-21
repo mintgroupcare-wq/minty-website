@@ -71,7 +71,7 @@ function initAccordion(){
 }
 
 // --- Care Cost Estimator (instant calculation) ---
-const CARE_RATES = { companion:25, personal:28, dementia:30, overnight:30, livein:null };
+const CARE_RATES = { companion:35, livein:null };
 function initEstimator(){
   const form = document.getElementById('estimatorForm');
   if(!form) return;
@@ -88,7 +88,7 @@ function initEstimator(){
       if(diff>0) hours = Math.max(4, Math.round((diff/60)*10)/10);
     }
     const careLevel = document.getElementById('careLevel').value;
-    const rate = CARE_RATES[careLevel] ?? 25;
+    const rate = CARE_RATES[careLevel] ?? 35;
     const weekendSelected = [...form.querySelectorAll('.day-btn.active')].some(b=>['Sat','Sun'].includes(b.dataset.day));
     const holiday = document.getElementById('holidayCare').value === 'Yes';
     let effectiveRate = rate + (weekendSelected?5:0) + (holiday?8:0);
