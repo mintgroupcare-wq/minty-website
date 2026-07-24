@@ -71,13 +71,31 @@ function initAccordion(){
 }
 
 // --- Care Cost Estimator (instant calculation) ---
-const CARE_RATES = { companion:35,  livein:null };
+const CARE_RATES = { hourly:35 };
 const TRAVEL_FEES = { 'Under 10 miles, included':0, '10–20 miles':20, '20+ miles':40 };
+const LIVEIN_BASE = 2700;
 function initEstimator(){
   const form = document.getElementById('estimatorForm');
   if(!form) return;
 
   function calc(){
+    const careLevel = document.getElementById('careLevel').value;
+    const travelDist = document.getElementById('travelDist').value;
+    const travelFee = TRAVEL_FEES[travelDist] ?? 0;
+    const isLiveIn = careLevel === 'livein';
+
+    document.querySelectorAll('.hourlyOnlyFields').forEach(el=> el.style.display = isLiveIn ? 'none' : '');
+    document.getElementById('hourlyEstimate').style.display = isLiveIn ? 'none' : '';
+    document.getElementById('liveInEstimate').style.display = isLiveIn ? '' : 'none';
+
+    if(isLiveIn){
+      const liveInTotal = LIVEIN_BASE + travelFee;
+      document.getElementById('estLiveInTravelFee').textContent = travelFee ? '$'+travelFee : 'Included';
+      document.getElementById('estLiveInTotal').textContent = '$'+liveInTotal.toLocaleString();
+      document.getElementById('estLiveInBigNumber').textContent = '$'+liveInTotal.toLocaleString()+' / 3 days';
+      return;
+    }
+
     const days = form.querySelectorAll('.day-btn.active').length || 1;
     const arrival = document.getElementById('arrivalTime').value;
     const departure = document.getElementById('departureTime').value;
@@ -88,13 +106,10 @@ function initEstimator(){
       let diff = (dh*60+dm) - (ah*60+am);
       if(diff>0) hours = Math.max(4, Math.round((diff/60)*10)/10);
     }
-    const careLevel = document.getElementById('careLevel').value;
-    const rate = CARE_RATES[careLevel] ?? 25;
+    const rate = CARE_RATES[careLevel] ?? 35;
     const weekendSelected = [...form.querySelectorAll('.day-btn.active')].some(b=>['Sat','Sun'].includes(b.dataset.day));
     const holiday = document.getElementById('holidayCare').value === 'Yes';
     let effectiveRate = rate + (weekendSelected?5:0) + (holiday?8:0);
-    const travelDist = document.getElementById('travelDist').value;
-    const travelFee = TRAVEL_FEES[travelDist] ?? 0;
     const careCost = Math.round(hours*effectiveRate);
     const perVisit = careCost + travelFee;
     const weekly = perVisit*days;
