@@ -61,6 +61,7 @@
       </div>
 
       <p style="font-size:12.5px;font-weight:700;color:var(--text-soft);margin-bottom:8px">PREFERRED DAYS</p>
+      <div class="hourlyOnlyFields">
       <div class="days-row">
         <div class="day-btn active" data-day="Mon">Mon</div>
         <div class="day-btn" data-day="Tue">Tue</div>
@@ -75,14 +76,13 @@
         <div class="field"><label>Arrival time</label><input type="time" id="arrivalTime" value="08:00"></div>
         <div class="field"><label>Departure time</label><input type="time" id="departureTime" value="12:00"></div>
       </div>
+      </div>
 
       <div class="field">
         <label>Care level</label>
         <select id="careLevel">
-          <option value="companion">Companion Care, $25/hr</option>
-          <option value="personal">Personal Care, $28/hr</option>
-          <option value="dementia">Dementia &amp; Memory Care, $30/hr</option>
-          <option value="overnight">Overnight Care, $30/hr</option>
+          <option value="hourly">Hourly Care, $35/hr</option>
+          <option value="livein">Live-In Care, Starting at $2,700 (3-day minimum)</option>
         </select>
       </div>
 
@@ -123,9 +123,9 @@
         </div>
       </div>
 
-      <div class="field"><label>Holiday care</label>
+      <div class="hourlyOnlyFields"><div class="field"><label>Holiday care</label>
         <select id="holidayCare"><option>No</option><option>Yes</option></select>
-      </div>
+      </div></div>
 
       <button type="button" class="btn" style="width:100%;margin-top:8px" onclick="document.getElementById('startDate').dispatchEvent(new Event('input'))">📊 UPDATE ESTIMATE</button>
     </form>
@@ -133,15 +133,26 @@
     <div class="reveal">
       <div class="band" style="padding:26px">
         <h3 style="font-size:16px;margin-bottom:16px"><span style="background:var(--gold);color:#2a2205;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;margin-right:8px">2</span>Estimated Cost</h3>
+        <div id="hourlyEstimate">
         <div class="est-row"><span>Selected days</span><b id="estSelectedDays">2</b></div>
         <div class="est-row"><span>Hours per visit</span><b id="estHours">4</b></div>
-        <div class="est-row"><span>Average hourly rate</span><b id="estRate">$25</b></div>
+        <div class="est-row"><span>Average hourly rate</span><b id="estRate">$35</b></div>
         <div class="est-row"><span>Travel fee</span><b id="estTravelFee">Included</b></div>
         <div class="est-row"><span>Per visit</span><b id="estPerVisit">$100</b></div>
         <div class="est-row" style="border-bottom:0"><span>Weekly</span><b id="estWeekly">$200</b></div>
         <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin:14px 0 6px" id="estBigNumber">$200/week</div>
         <p style="font-size:11.5px;opacity:.8;line-height:1.5">Weekend care adds $5/hr. Holiday care adds $8/hr. Travel fee applied per visit for distances over 10 miles ($20 for 10–20 miles, $40 for 20+ miles) — final travel cost may be adjusted based on exact location. This is an estimate only — final pricing is confirmed after a free in-home assessment.</p>
         <p style="font-size:11.5px;opacity:.8;margin-top:6px">Approx. monthly: <b id="estMonthly">$866</b></p>
+        </div>
+
+        <div id="liveInEstimate" style="display:none">
+        <div class="est-row"><span>Package</span><b>Live-In Care</b></div>
+        <div class="est-row"><span>Minimum stay</span><b>3 days</b></div>
+        <div class="est-row"><span>Travel fee</span><b id="estLiveInTravelFee">Included</b></div>
+        <div class="est-row" style="border-bottom:0"><span>Starting at</span><b id="estLiveInTotal">$2,700</b></div>
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin:14px 0 6px" id="estLiveInBigNumber">$2,700 / 3 days</div>
+        <p style="font-size:11.5px;opacity:.8;line-height:1.5">3-day minimum stay required. 24-hour live-in support with a dedicated caregiver in the home throughout the assignment. Travel fee applied once per assignment for distances over 10 miles ($20 for 10–20 miles, $40 for 20+ miles). Final pricing is based on level of care, location, and length of stay, confirmed after a free in-home assessment.</p>
+        </div>
       </div>
 
       <div class="card" style="padding:20px;margin-top:16px;display:flex;gap:14px;align-items:center">
