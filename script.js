@@ -71,7 +71,7 @@ function initAccordion(){
 }
 
 // --- Care Cost Estimator (instant calculation) ---
-const CARE_RATES = { companion:25, personal:28, dementia:30, overnight:30, livein:null };
+const CARE_RATES = { companion:35,  livein:null };
 const TRAVEL_FEES = { 'Under 10 miles, included':0, '10–20 miles':20, '20+ miles':40 };
 function initEstimator(){
   const form = document.getElementById('estimatorForm');
